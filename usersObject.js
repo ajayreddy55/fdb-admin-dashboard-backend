@@ -171,3 +171,39 @@ exports.usersSessionData = [
     sessionDuration: "90",
   },
 ];
+
+exports.popularCategoriesData = [
+  {
+    category: "Restaurants",
+  },
+  {
+    category: "Hotels",
+  },
+  {
+    category: "Education",
+  },
+  {
+    category: "Beauty & Spa",
+  },
+];
+
+exports.searchQueriesData = [
+  {
+    searchInput: "Tutors",
+  },
+  {
+    searchInput: "Restaurants",
+  },
+  {
+    searchInput: "Salons",
+  },
+  {
+    searchInput: "AC Technicians",
+  },
+  {
+    searchInput: "Maids",
+  },
+  {
+    searchInput: "Consultants",
+  },
+];

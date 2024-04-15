@@ -2,6 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const helmet = require("helmet");
+// const popularCategoriesModel = require("./database-models/popularCategoriesData");
+// const { popularCategoriesData, searchQueriesData } = require("./usersObject");
+// const searchQueriesDataModel = require("./database-models/searchQueriesData");
 // const activeUsersDataModel = require("./database-models/activeUsers");
 // const { usersActiveObjectData, usersSessionData } = require("./usersObject");
 // const usersSessionDataModel = require("./database-models/userSessionDur");
@@ -24,10 +27,8 @@ app.use("/api", require("./routes/apiRoutes"));
 
 // const addUsers = async (data) => {
 //   try {
-//     const user = new usersSessionDataModel({
-//       userId: data.userId,
-//       sessionDate: new Date(data.sessionDate),
-//       sessionDuration: Number(data.sessionDuration),
+//     const user = new searchQueriesDataModel({
+//       searchInput: data.searchInput,
 //     });
 
 //     await user.save();
@@ -36,7 +37,7 @@ app.use("/api", require("./routes/apiRoutes"));
 //   }
 // };
 
-// for (let data of usersSessionData) {
+// for (let data of searchQueriesData) {
 //   addUsers(data);
 // }
 

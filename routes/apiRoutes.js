@@ -4,6 +4,8 @@ const usersDataModel = require("../database-models/registeredUsers");
 const activeUsersDataModel = require("../database-models/activeUsers");
 const usersSessionDataModel = require("../database-models/userSessionDur");
 const jwtAuthAdmin = require("../middleware/jwtAuthAdmin");
+const popularCategoriesModel = require("../database-models/popularCategoriesData");
+const searchQueriesDataModel = require("../database-models/searchQueriesData");
 
 const router = express.Router();
 
@@ -174,6 +176,44 @@ router.get("/user-avg-all-session", jwtAuthAdmin, async (request, response) => {
       ])
       .then((dataObject) => {
         return response.status(200).json({ avgUsersDuration: dataObject });
+      })
+      .catch((error) => {
+        console.log(error.message);
+        return response.status(400).json({ message: "Something Went Wrong" });
+      });
+  } catch (error) {
+    console.log(error.message);
+    return response.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+router.get(
+  "/popular-categories-admin",
+  jwtAuthAdmin,
+  async (request, response) => {
+    try {
+      await popularCategoriesModel
+        .find()
+        .then((dataObject) => {
+          return response.status(200).json({ popularCategories: dataObject });
+        })
+        .catch((error) => {
+          console.log(error.message);
+          return response.status(400).json({ message: "Something Went Wrong" });
+        });
+    } catch (error) {
+      console.log(error.message);
+      return response.status(500).json({ message: "Internal Server Error" });
+    }
+  }
+);
+
+router.get("/search-queries-admin", jwtAuthAdmin, async (request, response) => {
+  try {
+    await searchQueriesDataModel
+      .find()
+      .then((dataObject) => {
+        return response.status(200).json({ searchQueries: dataObject });
       })
       .catch((error) => {
         console.log(error.message);
