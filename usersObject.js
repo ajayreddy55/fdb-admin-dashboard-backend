@@ -207,3 +207,89 @@ exports.searchQueriesData = [
     searchInput: "Consultants",
   },
 ];
+
+exports.clicksDataObject = [
+  {
+    userId: 2,
+    serviceId: 10,
+    dateClicked: "2024-04-03",
+  },
+  {
+    userId: 2,
+    serviceId: 17,
+    dateClicked: "2024-04-03",
+  },
+  {
+    userId: 5,
+    serviceId: 15,
+    dateClicked: "2024-04-02",
+  },
+  {
+    userId: 8,
+    serviceId: 14,
+    dateClicked: "2024-04-07",
+  },
+  {
+    userId: 6,
+    serviceId: 12,
+    dateClicked: "2024-04-09",
+  },
+  {
+    userId: 2,
+    serviceId: 19,
+    dateClicked: "2024-04-06",
+  },
+  {
+    userId: 1,
+    serviceId: 13,
+    dateClicked: "2024-04-08",
+  },
+  {
+    userId: 5,
+    serviceId: 16,
+    dateClicked: "2024-04-04",
+  },
+  {
+    userId: 3,
+    serviceId: 29,
+    dateClicked: "2024-04-11",
+  },
+];
+
+exports.viewsDataObject = [
+  {
+    userId: 2,
+    serviceId: 10,
+    dateViewed: "2024-04-03",
+  },
+  {
+    userId: 5,
+    serviceId: 15,
+    dateViewed: "2024-04-02",
+  },
+  {
+    userId: 8,
+    serviceId: 14,
+    dateViewed: "2024-04-07",
+  },
+  {
+    userId: 6,
+    serviceId: 12,
+    dateViewed: "2024-04-09",
+  },
+  {
+    userId: 2,
+    serviceId: 19,
+    dateViewed: "2024-04-06",
+  },
+  {
+    userId: 1,
+    serviceId: 13,
+    dateViewed: "2024-04-08",
+  },
+  {
+    userId: 5,
+    serviceId: 16,
+    dateViewed: "2024-04-04",
+  },
+];

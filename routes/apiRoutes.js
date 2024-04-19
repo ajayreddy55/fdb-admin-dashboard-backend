@@ -6,6 +6,8 @@ const usersSessionDataModel = require("../database-models/userSessionDur");
 const jwtAuthAdmin = require("../middleware/jwtAuthAdmin");
 const popularCategoriesModel = require("../database-models/popularCategoriesData");
 const searchQueriesDataModel = require("../database-models/searchQueriesData");
+const serviceClicksDataModel = require("../database-models/clicksData");
+const serviceViewsDataModel = require("../database-models/viewsData");
 
 const router = express.Router();
 
@@ -214,6 +216,98 @@ router.get("/search-queries-admin", jwtAuthAdmin, async (request, response) => {
       .find()
       .then((dataObject) => {
         return response.status(200).json({ searchQueries: dataObject });
+      })
+      .catch((error) => {
+        console.log(error.message);
+        return response.status(400).json({ message: "Something Went Wrong" });
+      });
+  } catch (error) {
+    console.log(error.message);
+    return response.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+router.get("/vendor-clicks-count", async (request, response) => {
+  try {
+    await serviceClicksDataModel
+      .countDocuments()
+      .then((dataObject) => {
+        return response.status(200).json({ clicksCount: dataObject });
+      })
+      .catch((error) => {
+        console.log(error.message);
+        return response.status(400).json({ message: "Something Went Wrong" });
+      });
+  } catch (error) {
+    console.log(error.message);
+    return response.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+router.get("/vendor-views-count", async (request, response) => {
+  try {
+    await serviceViewsDataModel
+      .countDocuments()
+      .then((dataObject) => {
+        return response.status(200).json({ viewsCount: dataObject });
+      })
+      .catch((error) => {
+        console.log(error.message);
+        return response.status(400).json({ message: "Something Went Wrong" });
+      });
+  } catch (error) {
+    console.log(error.message);
+    return response.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+router.get("/vendor-service-clicks-graph", async (request, response) => {
+  try {
+    await serviceClicksDataModel
+      .aggregate([
+        {
+          $group: {
+            _id: {
+              $dateToString: { format: "%Y-%m-%d", date: "$dateClicked" },
+            },
+            clicksCount: { $count: {} },
+          },
+        },
+        {
+          $sort: { _id: 1 },
+        },
+      ])
+      .then((dataObject) => {
+        return response.status(200).json({ clickCount: dataObject });
+      })
+      .catch((error) => {
+        console.log(error.message);
+        return response.status(400).json({ message: "Something Went Wrong" });
+      });
+  } catch (error) {
+    console.log(error.message);
+    return response.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+router.get("/vendor-service-views-graph", async (request, response) => {
+  try {
+    await serviceViewsDataModel
+      .aggregate([
+        {
+          $group: {
+            _id: {
+              $dateToString: { format: "%Y-%m-%d", date: "$dateViewed" },
+            },
+            viewsCount: { $count: {} },
+          },
+        },
+        {
+          $sort: { _id: 1 },
+        },
+      ])
+      .then((dataObject) => {
+        return response.status(200).json({ viewsCount: dataObject });
       })
       .catch((error) => {
         console.log(error.message);
