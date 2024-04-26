@@ -3,7 +3,7 @@ const { Schema, model } = mongoose;
 
 const usersSessionDataSchema = new Schema({
   userId: {
-    type: String,
+    type: Schema.Types.ObjectId,
     required: true,
   },
   sessionDate: {

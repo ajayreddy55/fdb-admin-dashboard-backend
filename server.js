@@ -2,15 +2,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const helmet = require("helmet");
-// const serviceClicksDataModel = require("./database-models/clicksData");
-// const { clicksDataObject, viewsDataObject } = require("./usersObject");
-// const serviceViewsDataModel = require("./database-models/viewsData");
-// const popularCategoriesModel = require("./database-models/popularCategoriesData");
-// const { popularCategoriesData, searchQueriesData } = require("./usersObject");
-// const searchQueriesDataModel = require("./database-models/searchQueriesData");
-// const activeUsersDataModel = require("./database-models/activeUsers");
-// const { usersActiveObjectData, usersSessionData } = require("./usersObject");
-// const usersSessionDataModel = require("./database-models/userSessionDur");
+// const reviewsDataModel = require("./database-models/reviewsData");
+// const { reviewsDataObject, paymentsDataObject } = require("./usersObject");
+// const paymentsDataModel = require("./database-models/paymentsData");
+// const servicesCategoryDataModel = require("./database-models/servicesCategory");
+// const { servicesCategoryObject, servicesDataObject } = require("./usersObject");
+// const servicesDataModel = require("./database-models/servicesData");
+// const usersDataModel = require("./database-models/registeredUsers");
+// const { usersObjectData } = require("./usersObject");
 
 const app = express();
 app.use(express.json());
@@ -30,10 +29,13 @@ app.use("/api", require("./routes/apiRoutes"));
 
 // const addUsers = async (data) => {
 //   try {
-//     const user = new serviceViewsDataModel({
+//     const user = new paymentsDataModel({
 //       userId: data.userId,
 //       serviceId: data.serviceId,
-//       dateViewed: new Date(data.dateViewed),
+//       paymentId: data.paymentId,
+//       status: data.status,
+//       price: data.price,
+//       dateOfPayment: new Date(Date.now()),
 //     });
 
 //     await user.save();
@@ -42,7 +44,7 @@ app.use("/api", require("./routes/apiRoutes"));
 //   }
 // };
 
-// for (let data of viewsDataObject) {
+// for (let data of paymentsDataObject) {
 //   addUsers(data);
 // }
 

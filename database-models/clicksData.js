@@ -3,11 +3,11 @@ const { Schema, model } = mongoose;
 
 const serviceClicksDataSchema = new Schema({
   userId: {
-    type: String,
+    type: Schema.Types.ObjectId,
     required: true,
   },
   serviceId: {
-    type: String,
+    type: Schema.Types.ObjectId,
     required: true,
   },
   dateClicked: {
